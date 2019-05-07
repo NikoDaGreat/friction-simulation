@@ -1,0 +1,3 @@
+# Älä huomioi compiled filejä #
+*.pyc
+*.ini
