@@ -73,8 +73,5 @@ print "finished simulation"
 t1 = time.time()
 print "time taken {ti} s".format(ti=str(int(t1-t0)))
 
-posi = ft.read_array_from_file('au_position.txt')
-ft.plot_array(posi[:,2])
-ft.hold_plots()
 
 ft.trajectory_to_xyz()
