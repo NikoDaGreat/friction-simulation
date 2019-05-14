@@ -9,9 +9,9 @@ global_interval = 10 # femtoseconds
 sim = ft.FrictionSimulation()
 
 # create the lattices used
-sim.create_slab(element='Al',xy_cells=4,z_cells=2,top_z=4.0)
-# TÄHÄN Hg
-sim.create_slab(element='Ag',xy_cells=4,z_cells=2,top_z=0.0) # oikeasti myös Al
+sim.create_slab(element='Al',xy_cells=4,z_cells=3,top_z=5.0)
+sim.create_slab(element='Hg',xy_cells=1,z_cells=1,top_z=1.0)
+sim.create_slab(element='Ag',xy_cells=4,z_cells=3,top_z=0.0) # oikeasti myös Al
 
 
 sim.list_atoms() # print atoms to terminal for debug purposes
@@ -24,9 +24,8 @@ sim.create_interaction(['Al','Hg'], strength=0.2, equilibrium_distance=4.39)
 sim.create_interaction(['Ag','Hg'], strength=0.2, equilibrium_distance=4.39)
 
 Al_top_indices = sim.get_indices_by_element('Al')
-Al_bot_indices= sim.get_indices_by_element('Ag')
+Al_bot_indices= sim.get_indices_z_less_than(-2.5)
 Hg_indices = sim.get_indices_by_element('Hg')
-
 
 sim.set_velocities(indices=Al_top_indices, velocity=[0, 0.05, 0])
 
