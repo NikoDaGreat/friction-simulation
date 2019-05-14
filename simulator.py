@@ -35,14 +35,14 @@ Al_top_indices = sim.get_indices_z_more_than(2.9)
 Al_bot_indices= sim.get_indices_z_less_than(-2.5)
 #Hg_indices = sim.get_indices_by_element('Hg')
 
-sim.fix_velocities(indices=Al_top_indices, velocity=[0, 0.05, 0])
+#sim.fix_velocities(indices=Al_top_indices, velocity=[0, 0.05, 0])
 
 
 sim.fix_positions(Al_bot_indices)
 
 
 # default settings
-sim.create_dynamics(dt=1.0, temperature=300)
+sim.create_dynamics(dt=1.0)
 
 
 sim.save_trajectory_during_simulation(interval=global_interval, filename='{}.traj'.format(filename)) # 5 fs
