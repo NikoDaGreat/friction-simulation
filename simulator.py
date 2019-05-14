@@ -29,7 +29,7 @@ sim.list_atoms() # print atoms to terminal for debug purposes
 #the potential energy well (in eV) and the atomic separation (in Å)
 sim.create_interaction(['Al','Al'], strength=1.0, equilibrium_distance=equi_dist_Al)
 sim.create_interaction(['Hg','Hg'], strength=0.30, equilibrium_distance=-0.4+equi_dist(xy_cells(3)))
-sim.create_interaction(['Al','Hg'], strength=0.32, equilibrium_distance=2)
+sim.create_interaction(['Al','Hg'], strength=0.6, equilibrium_distance=2)
 
 Al_top_indices = sim.get_indices_z_more_than(12.0)
 Al_bot_indices= sim.get_indices_z_less_than(-3.5)
