@@ -30,7 +30,7 @@ Hg_indices = sim.get_indices_by_element('Hg')
 sim.set_velocities(indices=Al_top_indices, velocity=[0, 0.05, 0])
 
 
-simu.fix_positions(Al_bot_indices)
+sim.fix_positions(Al_bot_indices)
 
 
 # default settings
