@@ -18,7 +18,7 @@ def equi_dist(xy):
 xy_cells_Al = xy_cells(4.046)
 equi_dist_Al = equi_dist(xy_cells(4.046))
 # create the lattices used
-sim.create_slab(element='Al',xy_cells=xy_cells(4.046),z_cells=2,bottom_z=3.0)
+sim.create_slab(element='Al',xy_cells=xy_cells(4.046),z_cells=2,bottom_z=10.0)
 # sim.create_slab(element='Hg',xy_cells=1,z_cells=1,top_z=1.0)
 #sim.create_random_atoms(50, 'Hg', 0.5, 2.5, minimum_distance=1.2)
 sim.create_slab(element='Al',xy_cells=xy_cells(4.046),z_cells=2,top_z=0.0)
