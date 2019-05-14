@@ -1,0 +1,2 @@
+python simulator.py
+matlab -nodisplay -nosplash -nodesktop -r "run('plotGraphs.m');exit;" | tail -n +11
