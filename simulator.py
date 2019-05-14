@@ -10,10 +10,10 @@ global_interval = 10 # femtoseconds
 sim = ft.FrictionSimulation()
 
 def xy_cells(lattice_constant):
-    return np.round(10.0/lattice_constant)
+    return int(np.round(10.0/lattice_constant))
 
 def equi_dist(xy):
-    return np.divide(np.sqrt(50), xy)
+    return np.divide(np.sqrt(50), xy).item()
 
 xy_cells_Al = xy_cells(4.046)
 equi_dist_Al = equi_dist(xy_cells(4.046))
