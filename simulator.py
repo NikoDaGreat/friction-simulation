@@ -41,7 +41,7 @@ sim.fix_velocities(indices=Al_top_indices, velocity=[0, 0.005, 0], xyz=[True,Tru
 sim.fix_positions(Al_bot_indices)
 
 # yläslabille painovoima
-sim.add_constant_force(sim.get_indices_z_more_than(15.0),[0,0,-0.20])
+sim.add_constant_force(sim.get_indices_z_more_than(15.0),[0,0,-0.10])
 
 # default settings
 sim.set_temperature(temperature=300) # huoneenlämpö
@@ -59,7 +59,7 @@ sim.print_stats_during_simulation(interval=50)
 
 t0 = time.time()
 # run the simulation for 1000 fs
-sim.run_simulation(time=5000.0)
+sim.run_simulation(time=10000.0)
 t1 = time.time()
 
 print "time taken {ti} s".format(ti=str(int(t1-t0)))
