@@ -32,7 +32,7 @@ sim.create_interaction(['Hg','Hg'], strength=0.30, equilibrium_distance=equi_dis
 sim.create_interaction(['Al','Hg'], strength=0.6, equilibrium_distance=2+1)
 
 Al_top_indices = sim.get_indices_z_more_than(12.0)
-Al_toppest_indices = sim.get_indices_z_more_than(12.0+)
+Al_toppest_indices = sim.get_indices_z_more_than(12.0+6)
 Al_bot_indices= sim.get_indices_z_less_than(-3.5)
 Hg_indices = sim.get_indices_by_element('Hg')
 
@@ -53,7 +53,7 @@ sim.save_trajectory_during_simulation(interval=global_interval, filename='{}.tra
 sim.gather_energy_and_temperature_during_simulation(interval=global_interval, filename='energy.txt')
 sim.gather_average_position_during_simulation(interval=global_interval,indices=Al_top_indices,filename='Al_position.txt')
 sim.gather_average_position_during_simulation(interval=global_interval,indices=Hg_indices,filename='Hg_position.txt')
-sim.gather_average_force_during_simulation(interval=global_interval,indices=Al_top_indices,filename='Al_forces.txt')
+sim.gather_average_force_during_simulation(interval=global_interval,indices=Al_toppest_indices,filename='Al_forces.txt')
 
 # - monitor the simulation by printing info to stdout
 sim.print_stats_during_simulation(interval=50)

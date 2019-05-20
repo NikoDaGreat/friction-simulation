@@ -11,8 +11,17 @@ z=data(:,3).*(-1);
 
 
 lm = fitlm(z,y,'linear');
-%[ypred,yci] = predict(lm,tspace,'Alpha',0.01);
+tspace = linspace(0,1,100)';
+[ypred,yci] = predict(lm,tspace,'Alpha',0.01);
 
 
 plot(lm)
+% ,'x--','Color',[86.3, 0, 42.4]./100,'LineWidth',1.6
 
+xlabel('Load $N$')
+ylabel('Friction force $F$')
+title('Kisulin namujen m{\"a}{\"a}r{\"a} ajan funktiona')
+legend('Trendik{\"a}yr{\"a}','Lineaarinen sovite','$99\%$-luottamusv{\"a}lit','location','SouthEast')
+grid on
+
+print('kitka','-dpng')
