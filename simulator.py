@@ -35,7 +35,7 @@ Al_top_indices = sim.get_indices_z_more_than(12.0)
 Al_bot_indices= sim.get_indices_z_less_than(-3.5)
 Hg_indices = sim.get_indices_by_element('Hg')
 
-sim.fix_velocities(indices=Al_top_indices, velocity=[0, 0.005, 0], xyz=[False,True,False])
+sim.fix_velocities(indices=Al_top_indices, velocity=[0, 0.005, 0], xyz=[True,True,False])
 
 # pohjaslabin pohja pysyy paikallaan
 sim.fix_positions(Al_bot_indices)
