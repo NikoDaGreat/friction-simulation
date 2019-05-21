@@ -3,6 +3,7 @@
 import friction_tools as ft
 import numpy as np
 import time
+import os
 #tiedostojen lukemiseen
 
 
@@ -22,9 +23,9 @@ equi_dist_Al = equi_dist(xy_cells(4.046))
 
 
 #simuloidut voimat(testi)
-forces = np.linspace(0,1,11)
+#forces = np.linspace(0,0.1,11)
 
-
+forces = [0.01]
 
 for N in forces:
     #keskimääräinen y-suuntainen voima
@@ -65,11 +66,11 @@ for N in forces:
     sim.create_dynamics(dt=global_interval, temperature=273, coupled_indices=Al_bot_indices)
 
 
-    sim.save_trajectory_during_simulation(interval=global_interval, filename='{}_{}.traj'.format(filename, N)) # 5 fs
-    #sim.gather_energy_and_temperature_during_simulation(interval=global_interval, filename='energy.txt')
+    sim.save_trajectory_during_simulation(interval=global_interval, filename='{}/data/{}_{}.traj'.format(os.getcwd(), filename, N)) # 5 fs
+    sim.gather_energy_and_temperature_during_simulation(interval=global_interval, filename='{}/data/energy_{}.txt'.format(os.getcwd(),filename, N))
     #sim.gather_average_position_during_simulation(interval=global_interval,indices=Al_top_indices,filename='Al_position.txt')
     #sim.gather_average_position_during_simulation(interval=global_interval,indices=Hg_indices,filename='Hg_position.txt')
-    sim.gather_average_force_during_simulation(interval=global_interval,indices=Al_toppest_indices,filename='Al_forces_{}.txt'.format(N))
+    sim.gather_average_force_during_simulation(interval=global_interval,indices=Al_toppest_indices,filename='{}/data/Al_forces_{}.txt'.format(os.getcwd(),N))
 
     # - monitor the simulation by printing info to stdout
     sim.print_stats_during_simulation(interval=50)
@@ -81,7 +82,7 @@ for N in forces:
 
     print "time taken {ti} s".format(ti=str(int(t1-t0)))
     #avataan tekstitiedosto
-    file=np.loadtxt('Al_forces_{}.txt'.format(N))
+    file=np.loadtxt('{}/data/Al_forces_{}.txt'.format(os.getcwd,N))
     #tallennetaan voimat vektoreihin
     #MeanYs[length(MeanYs)] = np.mean(file[int(np.round(length(MeanYs)/2)):,1])
     #MeanZs[length(MeanZs)] = np.mean(file[int(np.round(length(MeanZs)/2)):,2])
@@ -92,4 +93,4 @@ for N in forces:
 
 
 
-# generated .traj to VMD-supported .xyz
+    # generated .traj to VMD-supported .xyz

@@ -1,8 +1,8 @@
 clear all
 close all
-forces = linspace(0,0.5,11)
+forces = linspace(0,0.1,11);
 for currentForce = forces
-    txt = sprintf('%.1f', currentForce);
+    txt = sprintf('%.2f', currentForce);
     data = importdata(strcat(strcat('Al_forces_', txt),'.txt'),' ',0);
     %x=data(:,1);
     y=data(:,2);
