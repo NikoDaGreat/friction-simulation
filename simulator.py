@@ -83,7 +83,7 @@ for N in forces:
     file=np.loadtxt('Al_forces_{}.txt'.format(N))
     #tallennetaan voimat vektoreihin
     MeanYs[length(MeanYs)] = np.mean(file[int(np.round(length(MeanYs)/2)):,1])
-    MeanZs[length(MeanZs)] = np.mean(file[int(np.round(length(MeanZs)/2)):,1])
+    MeanZs[length(MeanZs)] = np.mean(file[int(np.round(length(MeanZs)/2)):,2])
 
 
 
