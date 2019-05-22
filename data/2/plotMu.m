@@ -2,7 +2,8 @@
 close all
 clear all
 
-forces = [0.00 0.01 0.02 0.03 0.04 0.05 0.06];
+%forces = [0.00 0.01 0.02 0.03 0.04 0.05 0.06];
+forces = [0.10 0.15 0.20];
 mus=[];
 for currentForce = forces
     txt = sprintf('%.2f', currentForce);

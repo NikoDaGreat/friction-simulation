@@ -23,7 +23,7 @@ equi_dist_Al = equi_dist(xy_cells(4.046))
 #simuloidut voimat(testi)
 #forces = np.linspace(0,0.1,11)
 
-forces = [0.01, 0.02, 0.03]
+forces = [0, 0.0100, 0.0200, 0.0300, 0.0400, 0.0500]
 
 for N in forces:
     sim = ft.FrictionSimulation()
@@ -36,7 +36,7 @@ for N in forces:
 
     # create the lattices used
     sim.create_slab(element='Al',xy_cells=xy_cells(4.046),z_cells=3,bottom_z=12.0)
-    sim.create_slab(element='Hg',xy_cells=1, z_cells=1, top_z=7.0)
+#    sim.create_slab(element='Hg',xy_cells=1, z_cells=1, top_z=7.0)
     #sim.create_random_atoms(50, 'Hg', 2.0, 10, minimum_distance=-0.4+equi_dist(xy_cells(3)))
     sim.create_slab(element='Al',xy_cells=xy_cells(4.046),z_cells=3,top_z=0.0)
 
@@ -77,7 +77,7 @@ for N in forces:
 
     t0 = time.time()
     # run the simulation for 1000 fs
-    sim.run_simulation(time=10000.0)
+    sim.run_simulation(time=40000.0)
     t1 = time.time()
 
     print "time taken {ti} s".format(ti=str(int(t1-t0)))
