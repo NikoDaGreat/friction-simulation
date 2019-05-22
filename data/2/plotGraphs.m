@@ -29,7 +29,8 @@ for currentForce = forces
     z_force=mean(z);
     y_force=mean(y);
 
-    mu=-y_force/z_force
+    mu=-y_force/z_force % t?m? jos z parempi kuin currentForce
+    %mu=y_force/currentForce
 
-    save(strcat(strcat('mu_', txt),'.txt'), 'mu', '-ASCII','-append');
+    save(strcat(strcat('mu_', txt),'.txt'), 'mu', '-ASCII'); %,'-append');
 end
