@@ -25,7 +25,7 @@ equi_dist_Al = equi_dist(xy_cells(4.046))
 #simuloidut voimat(testi)
 #forces = np.linspace(0,0.1,11)
 
-forces = [0.01]
+forces = [0.01, 0.02, 0.03]
 
 for N in forces:
     #keskimääräinen y-suuntainen voima
@@ -67,7 +67,7 @@ for N in forces:
 
 
     sim.save_trajectory_during_simulation(interval=global_interval, filename='{}/data/{}_{}.traj'.format(os.getcwd(), filename, N)) # 5 fs
-    sim.gather_energy_and_temperature_during_simulation(interval=global_interval, filename='{}/data/energy_{}.txt'.format(os.getcwd(),filename, N))
+    sim.gather_energy_and_temperature_during_simulation(interval=global_interval, filename='{}/data/energy_{}.txt'.format(os.getcwd(), N))
     #sim.gather_average_position_during_simulation(interval=global_interval,indices=Al_top_indices,filename='Al_position.txt')
     #sim.gather_average_position_during_simulation(interval=global_interval,indices=Hg_indices,filename='Hg_position.txt')
     sim.gather_average_force_during_simulation(interval=global_interval,indices=Al_toppest_indices,filename='{}/data/Al_forces_{}.txt'.format(os.getcwd(),N))
@@ -82,14 +82,14 @@ for N in forces:
 
     print "time taken {ti} s".format(ti=str(int(t1-t0)))
     #avataan tekstitiedosto
-    file=np.loadtxt('{}/data/Al_forces_{}.txt'.format(os.getcwd,N))
+    file=np.loadtxt('{}/data/Al_forces_{}.txt'.format(os.getcwd(),N))
     #tallennetaan voimat vektoreihin
     #MeanYs[length(MeanYs)] = np.mean(file[int(np.round(length(MeanYs)/2)):,1])
     #MeanZs[length(MeanZs)] = np.mean(file[int(np.round(length(MeanZs)/2)):,2])
 
     #coeff = [np.mean(file[(np.size(file)/2):][:,1]), np.mean(file[(np.size(file)/2):][:,2]) ]
     #np.save("coefficient_{}".format(N), coeff )
-    ft.trajectory_to_xyz(filename_in='{}_{}.traj'.format(filename, N), filename_out='{}_{}.xyz'.format(filename, N))
+    ft.trajectory_to_xyz(filename_in='{}/data/{}_{}.traj'.format(os.getcwd(), filename, N), filename_out='{}/data/{}_{}.xyz'.format(os.getcwd(), filename, N))
 
 
 
