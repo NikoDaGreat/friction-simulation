@@ -1,47 +1,35 @@
+% Laskee kitkakertoimen forces-datasta ja tallentaa tiedostoon
 clear all
 close all
 
-%Editoi tätä listaa kun haluat skannata eri nimisiä tiedostoja.
-forces = [0.00 0.01]
+% Editoi tï¿½tï¿½ listaa kun haluat skannata eri nimisiï¿½ tiedostoja.
+forces = [0.00 0.01 0.02 0.03 0.04 0.05 0.06];
 for currentForce = forces
     txt = sprintf('%.2f', currentForce);
     data = importdata(strcat(strcat('Al_forces_', txt),'.txt'),' ',0);
-   
-    
+
+
     %x=data(:,1);
     y=data(:,2);
     z=data(:,3).*(-1);
     time=25.*(1:length(y));
-    
+
     figure
     subplot(2,1,1)
-    plot(time,y,'r.');hold on;plot(time,z,'k*');grid on;xlabel('Aika (fs)');ylabel('Voima (eV/Å)')
-    legend('Y','Z');
-    
+    plot(time,y,'r.');hold on;plot(time,z,'k*');grid on;xlabel('Time (fs)');ylabel('Force (eV/ï¿½)')
+    legend('Y','Z'); title(strcat(strcat('Load ', txt), ' (eV/ï¿½)'));
+
+
     subplot(2,1,2)
-    plot(time,y,'r-');grid on;xlabel('Aika (fs)');ylabel('Voima (eV/Å)')
-    legend('Y')
-    
-    
-    %xy=sqrt( x.^2 + y.^2 ); % pythagoraan lause
+    plot(time,y,'r-');grid on;xlabel('Time (fs)');ylabel('Force (eV/ï¿½)')
+    legend('Y');
+
+    print(strcat(strcat('kuvaaja_', txt),'.png'),'-dpng')
+
     z_force=mean(z);
     y_force=mean(y);
 
     mu=-y_force/z_force
-    % 
-    % lm = fitlm(z,y,'linear');
-    % tspace = linspace(0,1,100)';
-    % [ypred,yci] = predict(lm,tspace,'Alpha',0.01);
-    % plot(lm)
-    % % ,'x--','Color',[86.3, 0, 42.4]./100,'LineWidth',1.6
-    % 
-    % xlabel('Load $N$','interpreter','latex')
-    % ylabel('Friction force $F$','interpreter','latex')
-    % title('Friction with liquid lubrication ($Hg$)','interpreter','latex')
-    % %legend('','','','location','SouthEast')
-    % grid on
 
-    %print('kitka','-dpng')
-    %writematrix(,mu)
     save(strcat(strcat('mu_', txt),'.txt'), 'mu', '-ASCII','-append');
 end

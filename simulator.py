@@ -10,7 +10,6 @@ import os
 # init variables
 filename = 'simulation'
 global_interval = 5 # femtoseconds
-sim = ft.FrictionSimulation()
 
 def xy_cells(lattice_constant):
     return int(np.round(10.0/lattice_constant))
@@ -21,13 +20,14 @@ def equi_dist(xy):
 xy_cells_Al = xy_cells(4.046)
 equi_dist_Al = equi_dist(xy_cells(4.046))
 
-
 #simuloidut voimat(testi)
 #forces = np.linspace(0,0.1,11)
 
 forces = [0.01, 0.02, 0.03]
 
 for N in forces:
+    sim = ft.FrictionSimulation()
+
     #keskimääräinen y-suuntainen voima
     MeanYs = np.zeros(np.size(forces))
 
