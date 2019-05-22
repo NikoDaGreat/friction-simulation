@@ -59,7 +59,7 @@ for N in forces:
     sim.fix_positions(Al_bot_indices)
 
     # yläslabille painovoima
-    sim.add_constant_force(sim.get_indices_z_more_than(15.0),[0,0,-0.05])
+    sim.add_constant_force(sim.get_indices_z_more_than(15.0),[0,0,-N])
 
     # default settings
     sim.set_temperature(temperature=273) # huoneenlämpö
