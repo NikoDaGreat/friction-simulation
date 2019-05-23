@@ -1,0 +1,8 @@
+Kuvaajasta huomataan seuraavia asioita:
+	Etenemissuuntaiset voimat (Y) tai pinnan normaalin suuntaiset voimat (Z) eivät ole lainkaant tasaisia.
+	Normaalin suuntaiset voimat ovat paljon etenemissuunnan voimia suuremmat
+	Painamme kappaletta alas 0.06 eV/Å voimalla, mikä on tulosten mukaan kertaluokkaa pienempi voima kuin mitatut normaalin suuntaiset voimat.
+	Etenemissuuntaiset voimat kasvavat ajan funktiona. {Tarkastellaan korreloiko tämä havainto lämpötilan nousun kanssa.}
+	Y ja Z -suuntaiset voimat saavat sekä positiivia että negatiivisia arvoja, mikä johtunee atomihilan sisäisistä voimista.
+
+Tulokset vihjaavat, että voimat koostuvat suureksi osaksi hilan sisäisistä vuorovaikutuksista.
