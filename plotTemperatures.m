@@ -15,30 +15,33 @@ for currentForce = forces
     temperature=data(:,4);
     
     time=25.*(1:length(data(:,1)));
+    velocity=0.005; %A/fs
+    atom_point=4.046/velocity;
+    
+    n_lines=ceil(time(end)/atom_point);
 
     figure %plot temperature data
-    subplot(2,2,1)
+    subplot(2,1,1)
     plot(time,temperature,'r.');grid on;xlabel('Time (fs)');ylabel('Temperature (K)')
-    legend('Temperature'); title(strcat(strcat('Load ', txt), ' (eV/Å)'));
+    title(strcat(strcat('Load ', txt), ' (eV/Å)'));
+    hold on;ylim([min(temperature) max(temperature)]);
+    for index=1:n_lines
+        line([index*atom_point index*atom_point], [0 2000])
+    end
+    legend('Temperature', 'Markers for atoms');
 
 
-    subplot(2,2,2) %plot smoothened temperature data
-    sm_temp=smooth(temperature);
-    plot(time,sm_temp,'r-');grid on;xlabel('Time (fs)');ylabel('Temperature (K)')
-    legend('Smoothened Temperature');
 
-
-    subplot(2,2,3) %plot even smoother temperature data
+    subplot(2,1,2) %plot even smoother temperature data
     sm_sm_temp=smooth(smooth(temperature));
     plot(time,sm_sm_temp,'r-');grid on;xlabel('Time (fs)');ylabel('Temperature (K)')
-    legend('2x Smoothened Temperature');
+    hold on;ylim([min(temperature) max(temperature)]);
+    for index=1:n_lines
+        line([index*atom_point index*atom_point], [0 2000])
+    end
+    legend('2x Smoothened Temperature', 'Markers for atoms');
 
-    subplot(2,2,4) %plot loess-smoothened temperature data
-    loess_temp=smooth(temperature,'loess');
-    plot(time,loess_temp,'r-');grid on;xlabel('Time (fs)');ylabel('Temperature (K)')
-    legend('Loess-smoothened Temperature');
-
-
+ 
 
     print(strcat(strcat('temperature_', txt),'.png'),'-dpng')
 end
