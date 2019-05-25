@@ -4,6 +4,7 @@ close all
 
 % Editoi tï¿½tï¿½ listaa kun haluat skannata eri nimisiï¿½ tiedostoja.
 forces = [0.01 0.02 0.03 0.04 0.05 0.06];
+corrcoefs=[];
 for currentForce = forces
     txt = sprintf('%.2f', currentForce);
     energy_data = importdata(strcat(strcat('energy_', txt),'.txt'),' ',0);
@@ -31,16 +32,22 @@ for currentForce = forces
     net_force=abs(y(1:time_end))+abs(z(1:time_end));
     
     figure
-    subplot(3,1,1)
+    subplot(2,1,1)
     plot(net_force,temperature(1:time_end), 'k.');grid on;
     ylabel('Temperature (K)');xlabel('Sum of Forces (eV/Å)');
     legend('Correlation');title(strcat(strcat('Load ', txt), ' (eV/Å)'));
     
-    subplot(3,1,2)
+    subplot(2,1,2)
     plot(time_vector,net_force, 'r.');grid on;
     ylabel('Force (eV/Å)');xlabel('Time (fs)'); legend('Sum of Forces')
-
-
+    
+    correlation=corrcoef(net_force, temperature(1:time_end));
+    corrcoefs(end+1)=correlation(1,2);
     print(strcat(strcat('correlation_', txt),'.png'),'-dpng')
 
 end
+
+figure
+plot(forces, corrcoefs, 'k*', 'MarkerSize', 12, 'LineWidth', 2);grid on; ylabel('Correlation coefficient');xlabel('Load (eV/Ã…)');
+title('Correlation of temperature and net force');legend('Correlation coefficient');ylim([-1 1])
+print(strcat('correlation_plot', '.png'),'-dpng')
