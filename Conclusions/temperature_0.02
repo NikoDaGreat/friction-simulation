@@ -1,0 +1,15 @@
+Kuvaajasta huomataan seuraavia asioita:
+	Lämpötilassa on jaksollisuuksia, jotka ovat paljon pidempiä kuin aikajakso, jossa atomien huiput osuvat kohdalleen.
+	Videolta huomataan, että syynä on ylemmän kappaleen pomppiminen. 
+
+	Huomataan myös, että kaksijakoisten huippujen kärjet ovat täsmälleen atomienvälin päässä toisistaan. Mahdollisia syitä kuvaajan muodolle:
+		Kaksihaaraisten huippujen keskellä oleva kuilu saattaa johtua esimerkiksi siitä, että stick-vaiheessa atomit lukittuvat hetkeksi paikalleen.
+		Toinen selitys on, että juuri stickin hetkellä alemmassa tasossa oleva heat well imee lämpöenergian ylemmästä tasosta,
+		minkä takia lämpötila laskee huipun keskellä hetkellisesti lähtötasolle (~400K).
+		
+	Lämpötila on pienimmillään kun hila on maksimikorkeudella alemmasta hilasta. Kun ylempi hila alkaa laskeutua alemmas, kasvavat vuorovaikutusvoimat,
+	minkä seurauksena lämpötila kasvaa, kunnes saavuttaa huippunsa stick-vaiheen tapahtuessa.
+	
+	Yleinen lämpötilataso nousee ajan funktiona 300K -> 500K. Tämä huomataan paikallisten lämpötilaminimien kasvamisesta tasaisesti simulaation edetessä.
+	Todennäköinen syy: heat well ei ime tarpeeksi lämpöä, koska kappaleet ovat kontaktissa liian vähän aikaa.
+
