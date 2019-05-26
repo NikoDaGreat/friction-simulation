@@ -1,7 +1,7 @@
 
 
 # Friction-simulation
-Course project for simulating friction on an atomic scale with solid Aluminium-like layers and liquid lubrication.
+Course project for simulating friction on an atomic scale with solid FCC-structure layers and liquid lubrication.
 
 ## Prerequisites
 * Python 2.7.2
@@ -13,5 +13,9 @@ Course project for simulating friction on an atomic scale with solid Aluminium-l
 ## Installation
 * [Instructions are here](https://users.aalto.fi/~asf/teaching/aalto_physics/)
 
+## Images
+![Friction simulation correlation](Conclusions/correlation_0.02.png)
+![Friction simulation temperature](Conclusions/temperature_0.06.png)
+
 ## Special thanks
-* Coffee machine of the Aalto University Guild of Physics
+* Coffee machine of Aalto University Guild of Physics
