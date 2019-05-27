@@ -16,12 +16,12 @@ for currentForce = forces
 
     figure
     subplot(2,1,1)
-    plot(time,y,'r.');hold on;plot(time,z,'k*');grid on;xlabel('Time (fs)');ylabel('Force (eV/???)')
-    legend('Y','Z'); title(strcat(strcat('Load ', txt), ' (eV/???)'));
+    plot(time,y,'r.');hold on;plot(time,z,'k*');grid on;xlabel('Time (fs)');ylabel('Force (eV/\AA)')
+    legend('Y','Z'); title(strcat(strcat('Load \,', txt), ' (eV/\AA)'));
 
 
     subplot(2,1,2)
-    plot(time,y,'r-');grid on;xlabel('Time (fs)');ylabel('Force (eV/???)')
+    plot(time,y,'r-');grid on;xlabel('Time (fs)');ylabel('Force (eV/\AA)')
     legend('Y');
 
     print(strcat(strcat('kuvaaja_', txt),'.png'),'-dpng')
