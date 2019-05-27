@@ -16,7 +16,7 @@ for currentForce = forces
 
     figure
     subplot(2,1,1)
-    plot(time,y,'r.');hold on;plot(time,z,'k*');grid on;xlabel('Time (fs)');ylabel('Force (eV/\AA)')
+    plot(time,z,'k-');grid on;xlabel('Time (fs)');ylabel('Force (eV/\AA)')
     legend('Y','Z'); title(strcat(strcat('Load \,', txt), ' (eV/\AA)'));
 
 

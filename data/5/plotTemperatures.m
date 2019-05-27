@@ -20,26 +20,17 @@ for currentForce = forces
     
     n_lines=ceil(time(end)/atom_point);
 
-    figure %plot temperature data
-    subplot(2,1,1)
-    plot(time,temperature,'r.');grid on;xlabel('Time (fs)');ylabel('Temperature (K)')
-    title(strcat(strcat('Load ', txt), ' (eV/Å)'));
-    hold on;ylim([min(temperature) max(temperature)]);
-    for index=1:n_lines
-        line([index*atom_point index*atom_point], [0 2000])
-    end
-    legend('Temperature', 'Markers for atoms');
-
-
-
-    subplot(2,1,2) %plot even smoother temperature data
+   
+    figure
+    %plot even smoother temperature data
     sm_sm_temp=smooth(smooth(temperature));
-    plot(time,sm_sm_temp,'r-');grid on;xlabel('Time (fs)');ylabel('Temperature (K)')
+    plot(time,sm_sm_temp,'r-', 'Linewidth',2);grid on;xlabel('Time (fs)');ylabel('Temperature (K)')
     hold on;ylim([min(temperature) max(temperature)]);
     for index=1:n_lines
         line([index*atom_point index*atom_point], [0 2000])
     end
     legend('2x Smoothened Temperature', 'Markers for atoms');
+    title(strcat(strcat('Load ', txt), ' (eV/?)'));
 
  
 
