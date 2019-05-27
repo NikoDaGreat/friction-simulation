@@ -5,10 +5,9 @@ import numpy as np
 import time
 import os
 #tiedostojen lukemiseen
-
-
 # init variables
 filename = 'simulation'
+
 global_interval = 5 # femtoseconds
 
 def xy_cells(lattice_constant):
@@ -36,7 +35,7 @@ for N in forces:
 
     # create the lattices used
     sim.create_slab(element='Al',xy_cells=xy_cells(4.046),z_cells=3,bottom_z=12.0)
-#    sim.create_slab(element='Hg',xy_cells=1, z_cells=1, top_z=7.0)
+    sim.create_slab(element='Hg',xy_cells=1, z_cells=1, top_z=7.0)
     #sim.create_random_atoms(50, 'Hg', 2.0, 10, minimum_distance=-0.4+equi_dist(xy_cells(3)))
     sim.create_slab(element='Al',xy_cells=xy_cells(4.046),z_cells=3,top_z=0.0)
 
@@ -45,7 +44,7 @@ for N in forces:
 
     #the potential energy well (in eV) and the atomic separation (in Å)
     sim.create_interaction(['Al','Al'], strength=1.0, equilibrium_distance=equi_dist_Al)
-    sim.create_interaction(['Hg','Hg'], strength=0.30, equilibrium_distance=equi_dist(1) )
+#    sim.create_interaction(['Hg','Hg'], strength=0.30, equilibrium_distance=equi_dist(1) )
     sim.create_interaction(['Al','Hg'], strength=0.6, equilibrium_distance=2+1)
 
     Al_top_indices = sim.get_indices_z_more_than(12.0)
@@ -53,13 +52,13 @@ for N in forces:
     Al_bot_indices= sim.get_indices_z_less_than(-3.5)
     Hg_indices = sim.get_indices_by_element('Hg')
 
-    sim.fix_velocities(indices=Al_top_indices, velocity=[0, 0.005, 0], xyz=[True,True,False])
+    sim.fix_velocities(indices=Al_toppest_indices, velocity=[0, 0.005, 0], xyz=[True,True,False])
 
     # pohjaslabin pohja pysyy paikallaan
     sim.fix_positions(Al_bot_indices)
 
     # yläslabille painovoima
-    sim.add_constant_force(sim.get_indices_z_more_than(15.0),[0,0,-N])
+    sim.add_constant_force(Al_toppest_indices, [0,0,-N])
 
     # default settings
     sim.set_temperature(temperature=273) # huoneenlämpö
@@ -77,7 +76,7 @@ for N in forces:
 
     t0 = time.time()
     # run the simulation for 1000 fs
-    sim.run_simulation(time=40000.0)
+    sim.run_simulation(time=3000.0*5)
     t1 = time.time()
 
     print "time taken {ti} s".format(ti=str(int(t1-t0)))
