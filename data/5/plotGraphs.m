@@ -3,7 +3,7 @@ clear all
 close all
 
 % Editoi t???t??? listaa kun haluat skannata eri nimisi??? tiedostoja.
-forces = [0, 0.0100, 0.0200, 0.0300, 0.0400, 0.0500, 0.0600, 0.0700, 0.0800, 0.0900, 0.1000];
+forces = [0.0100, 0.0200, 0.0300, 0.0400, 0.0500, 0.0600];
 %forces = [0.10 0.15 0.20];
 for currentForce = forces
     txt = sprintf('%.2f', currentForce);
@@ -16,7 +16,7 @@ for currentForce = forces
 
     figure
     subplot(2,1,1)
-    plot(time,y,'r.');hold on;plot(time,z,'k*');grid on;xlabel('Time (fs)');ylabel('Force (eV/\AA)')
+    plot(time,z,'k-');grid on;xlabel('Time (fs)');ylabel('Force (eV/\AA)')
     legend('Y','Z'); title(strcat(strcat('Load \,', txt), ' (eV/\AA)'));
 
 
