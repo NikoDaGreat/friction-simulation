@@ -16,6 +16,7 @@ Course project for simulating friction on an atomic scale with solid FCC-structu
 ## Images
 ![Friction simulation correlation](Conclusions/correlation_0.02.png)
 ![Friction simulation temperature](Conclusions/temperature_0.06.png)
+![Friction simulation temperature](Conclusions/fricCoeffsCombined.png)
 
 ## Special thanks
 * Coffee machine of Aalto University Guild of Physics
